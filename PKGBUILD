@@ -1,38 +1,24 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Jacob Thomas Errington <aur@mail.jerrington.me>
+# Contributor: Catalin Hritcu <catalin.hritcu@gmail.com>
 
-# Maintainer: Your Name <youremail@domain.com>
 pkgname="ulex"
-pkgver="1.1"
+pkgver="1.2"
 pkgrel=1
-epoch=
-pkgdesc="ulex is a lexer generator for Unicode and OCaml"
+pkgdesc="An OCaml lexer generator for Unicode"
 arch=(x86_64)
-url="http://www.cduce.org/"
-license=('GPL')
-groups=()
+url="https://github.com/whitequark/ulex"
+license=('MIT')
 depends=('ocaml' 'camlp4')
-makedepends=()
-checkdepends=()
-optdepends=()
+makedepends=('ocaml-findlib' 'ocamlbuild')
 provides=($pkgname)
 conflicts=($pkgname)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("http://www.cduce.org/download/${pkgname}-${pkgver}.tar.gz")
-noextract=()
-md5sums=('ce49a013bc4a0e085977a9fe157017bf')
-validpgpkeys=()
+source=("https://github.com/whitequark/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('bfa0c03aa5546330c970b7250cadcc87e944c793189e9785389058b19624af71a3e5540a3a4775946b2e8a59bb7fa28d2635e5fd05a47dbcbbf34dacb68e15de')
 
 prepare() {
     cd "$pkgname-$pkgver"
     # build native code as well
-    sed -i '4s/.*/ALL=pa_ulex.cmxa ulexing.cmxa pa_ulex.cma ulexing.cma/' Makefile
+    sed -i '1s/.*/ALL=pa_ulex.cmxa ulexing.cmxa pa_ulex.cma ulexing.cma/' Makefile
 }
 
 build() {
