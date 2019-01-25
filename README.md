@@ -1,1 +1,1 @@
-Arch Linux PKGBUILD for ulex v1.2 
+Arch Linux PKGBUILD for ulex v1.2
